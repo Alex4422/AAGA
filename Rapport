@@ -1,0 +1,70 @@
+1)Implémentation d’algorithmes de l’article
+
+Question 1.1 
+Expliciter le processus de croissance permettant de compter les arbres de Schröder
+fortement croissants et donner, en la justifiant, la formule récursive de comptage.
+
+Réponse 1.1
+T = Z ∪ ΘT × Seq ≥1 (Z)
+
+Question 1.2 Implémenter la formule de comptage.
+Voir code source
+
+
+Question 1.3 Implémenter l’algorithme de génération uniforme présenté dans l’article.
+Voir code source
+
+
+Question 1.4
+Expliciter le processus de croissance permettant de compter les arbres de Schröder
+faiblement croissants et donner, en la justifiant, la formule de comptage récursive.
+
+Réponse 1.4
+
+
+Question 1.5
+Implémenter la formule de comptage.
+Voir code source
+
+
+Question 1.6
+Implémenter l’algorithme de génération exhaustive (unranking) présenté dans l’article.
+Deux autres algorithmes
+Voir code source
+
+2)Deux autres algorithmes
+
+Question 1.7
+Donner le pseudo-code d’un algorithme de unranking pour les arbres de Schröder
+fortement croissants.
+
+
+Question 1.8
+Implémenter cet algorithme.
+Voir code source
+
+
+Question 1.9
+Donner le pseudo-code d’un algorithme de génération récursive uniforme pour les
+arbres de Schröder faiblement croissants.
+
+
+Question 1.10
+Implémenter cet algorithme.
+Voir code source
+
+
+3)Expérimentations autour des deux modèles
+
+Question 1.11 Présenter des graphiques permettant de percevoir le nombre moyen de nœuds internes
+des arbres de grande tailles.
+
+
+Question 1.12
+Montrer (graphiquement) que les valeurs typique du nombre de nœuds internes est
+concentré autour de la moyenne.
+
+
+Question 1.13
+Répondre aux deux questions précédentes par rapport à la mesure de la hauteur des
+arbres.
