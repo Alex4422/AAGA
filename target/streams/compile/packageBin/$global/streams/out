@@ -1,0 +1,21 @@
+[0m[[0m[0minfo[0m] [0m[0mPackaging /home/charton/Bureau/M2/AAGA/AAGA/target/scala-2.12/aaga_2.12-0.1.0-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Schröder$Node$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/charton/Bureau/M2/AAGA/AAGA/target/scala-2.12/classes/Schröder$Node$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Schröder$Void$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/charton/Bureau/M2/AAGA/AAGA/target/scala-2.12/classes/Schröder$Void$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Schröder.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/charton/Bureau/M2/AAGA/AAGA/target/scala-2.12/classes/Schröder.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Schröder$Leaf$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/charton/Bureau/M2/AAGA/AAGA/target/scala-2.12/classes/Schröder$Leaf$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Schröder$Node.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/charton/Bureau/M2/AAGA/AAGA/target/scala-2.12/classes/Schröder$Node.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	main.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/charton/Bureau/M2/AAGA/AAGA/target/scala-2.12/classes/main.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	main$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/charton/Bureau/M2/AAGA/AAGA/target/scala-2.12/classes/main$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Schröder$Void.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/charton/Bureau/M2/AAGA/AAGA/target/scala-2.12/classes/Schröder$Void.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Schröder$Leaf.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/charton/Bureau/M2/AAGA/AAGA/target/scala-2.12/classes/Schröder$Leaf.class[0m
+[0m[[0m[0minfo[0m] [0m[0mDone packaging.[0m
