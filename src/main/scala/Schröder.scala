@@ -81,30 +81,41 @@ class Schröder
             var s2 = r % gk
             var T = unrankTree(k, s2)
             var C = unrankComposition(n, k, r/gk)
+
+            T
         }
     }
 
     def unrankComposition(n: Int, k: Int, s: Int): ListBuffer[Int] =
     {
-        if(n == 1 && k == 1 && s == 0) ListBuffer(1)
+      var C = ListBuffer[Int]()
+
+      if(n ==  k)
+        {
+          for(i <- 0 to k-1)
+            C.insert(i,1)
+
+        }
+
         else
         {
             var tmp = 0
             var s2 = s
-            var C = ListBuffer[Int]()
 
             if(s2 < combination(n - 2, k - 1))
             {
                 C = unrankComposition(n - 1, k, s2)
                 C.update(C.size, C.last + 1)
-                C
+
             }
             else
             {
                 s2 = s2 - combination(n - 2, k - 1)
                 C = unrankComposition(n - 1, k, s2):+ 1
-                C
+
             }
+
         }
+      C
     }
 }
