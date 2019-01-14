@@ -12,3 +12,5 @@ compile
 package bib
 run 
 compile
+run
+compile
