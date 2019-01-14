@@ -1,3 +1,7 @@
+package runtime
+
+import schröder.Schröder
+
 object main
 {
     def combination(n: Int, k: Int): Int =
@@ -28,7 +32,8 @@ object main
 
     def main(args: Array[String]): Unit =
     {
-        println(ComptageWeak(10))
+        val T = new Schröder
+        println(T.treeBuilder(5))
     }
 
 }
