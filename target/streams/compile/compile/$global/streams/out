@@ -1,4 +1,6 @@
-[0m[[0m[31merror[0m] [0m[0m/home/charton/Bureau/M2/AAGA/AAGA/src/main/scala/main.scala:35:17: not found: value Schröder[0m
-[0m[[0m[31merror[0m] [0m[0m        val T = Schröder()[0m
-[0m[[0m[31merror[0m] [0m[0m                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/charton/Bureau/M2/AAGA/AAGA/src/main/scala/Schröder.scala:80:59: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: scala.collection.mutable.ListBuffer[Int][0m
+[0m[[0m[31merror[0m] [0m[0m                C = unrankComposition(n - 1, k, s2).append(1)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                          ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m
