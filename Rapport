@@ -5,6 +5,9 @@ Expliciter le processus de croissance permettant de compter les arbres de Schrö
 fortement croissants et donner, en la justifiant, la formule récursive de comptage.
 
 Réponse 1.1
+
+Un arbre de Schröder fortement croissant est un arbre de Schröder qui, en plus, possède des nœuds internes qui sont numérotés de 1 à l ( l est un entier et est le nombre de nœuds internes) de telle manière que tous les numéros des nœuds sont distincts (pas de doublons) et au fur à mesure que l’on descend dans l’arbre (depuis la racine) ces numéros augmentent quelle que soit la branche dans laquelle on se trouve
+
 T = Z ∪ ΘT × Seq ≥1 (Z)
 
 Question 1.2 Implémenter la formule de comptage.
@@ -21,6 +24,9 @@ faiblement croissants et donner, en la justifiant, la formule de comptage récur
 
 Réponse 1.4
 
+Un arbre de Schröder faiblement croissant est un arbre de Schröder fortement croissant qui, à la différence près, possède des doublons dans ses labels.
+
+(3.7) G(z)=z+G(z^2/(1−z) + z) − G(z).
 
 Question 1.5
 Implémenter la formule de comptage.
@@ -29,7 +35,6 @@ Voir code source
 
 Question 1.6
 Implémenter l’algorithme de génération exhaustive (unranking) présenté dans l’article.
-Deux autres algorithmes
 Voir code source
 
 2)Deux autres algorithmes
