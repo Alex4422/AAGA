@@ -11,6 +11,7 @@ class Schröder()
 
     def whichLeaf(k: Int, listLeaf:ListBuffer[Schröder]): Schröder =
     {
+        var compteur = 0
         var i = 0
         var index = 0
         var continue = true
@@ -24,12 +25,13 @@ class Schröder()
             {
                 index = listLeaf.indexOf(father, i)
                 if(index == k) continue = false
-                else i = index + 1
+                else
+                {
+                    i = index + 1
+                    compteur = compteur + 1
+                }
             }
-            println("k : "+k)
-            println("index : "+index)
-            println("size : "+father.fils.size)
-            father.fils.apply(index)
+            father.fils.apply(compteur)
         }
     }
 
@@ -114,6 +116,8 @@ class Schröder()
 
             while(r >= 0)
             {
+                println("COUCOU")
+                println("r : "+r)
                 r = r - combination(n - 1, k - 1) * gk
                 k = k - 1
                 gk = ComptageWeak(k)
@@ -121,6 +125,7 @@ class Schröder()
 
             k = k + 1
             gk = ComptageWeak(k)
+            println("SALUT")
             r = r + combination(n - 1, k - 1) * gk
 
             var s2 = r % gk
@@ -170,6 +175,7 @@ class Schröder()
             }
             else
             {
+                println("HELLO")
                 s2 = s2 - combination(n - 2, k - 1)
                 C = unrankComposition(n - 1, k - 1, s2):+ 1
             }

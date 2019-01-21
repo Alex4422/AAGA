@@ -4,7 +4,9 @@ object Bib
 {
     def combination(n: Int, k: Int): Int =
     {
-        if (k == 0 || k == n) 1
+        println("k : "+k)
+        println("n : "+n)
+        if (k <= 0 || k == n) 1
         else combination(n - 1, k - 1) + combination(n - 1, k)
     }
 
