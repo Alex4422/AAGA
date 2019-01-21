@@ -177,13 +177,13 @@ class Schröder()
       C
     }
 
-  def unrankTreeStrong(n: Int, s: Int, i:Int): (Schröder, ListBuffer[Schröder]) = //n -> Taille de l'arbre = nb Feuille, S -> Rank,i -> nb de noeud interne
+  def unrankTreeStrong(n: Int, s: Int): (Schröder, ListBuffer[Schröder]) = //n -> Taille de l'arbre = nb Feuille, S -> Rank
   {
     if(n == 1) (Leaf(), ListBuffer())
     else
     {
       var k = n - 1
-      var tk = ComptageStrong(n,i)
+      var tk = ComptageStrong(n)
       var r = s
       var l = 0
 
@@ -191,15 +191,15 @@ class Schröder()
       {
         r = r - combination(n - 1, k - 1) * tk
         k = k - 1
-        tk = ComptageStrong(n,i)
+        tk = ComptageStrong(n)
       }
 
       k = k + 1
-      tk = ComptageStrong(n,i)
+      tk = ComptageStrong(n)
       r = r + combination(n - 1, k - 1) * tk
 
       var s2 = r % tk
-      var (t, listLeaf) = unrankTreeStrong(k, s2, i)
+      var (t, listLeaf) = unrankTreeStrong(k, s2)
 
       t match
       {

@@ -8,10 +8,10 @@ object Bib
         else combination(n - 1, k - 1) + combination(n - 1, k)
     }
 
-    def ComptageStong(n: Int): Int = //n -> Feuille
+    def ComptageStrong(n: Int): Int = //n -> Feuille
     {
         if(n <= 2) 1
-        else n * ComptageStong(n-1)
+        else n * ComptageStrong(n-1)
     }
 
     def ComptageWeak(n: Int): Int =
