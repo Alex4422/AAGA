@@ -9,29 +9,48 @@ class Schröder()
     case class Leaf() extends Schröder
     case class Void() extends Schröder
 
-    def ajoutNewNode(k: Int, listLeaf: ListBuffer[Node], nb: Int, l: Int): (Schröder, ListBuffer[Node]) =
+    def whichLeaf(k: Int, listLeaf:ListBuffer[Schröder]): Schröder =
+    {
+        var i = 0
+        var index = 0
+        var continue = true
+        val father = listLeaf.apply(k).asInstanceOf[Node]
+        var nbSon = listLeaf.count(_ == father)
+
+        if(nbSon == 1) father.fils.apply(0)
+        else
+        {
+            while(continue)
+            {
+                index = listLeaf.indexOf(father, i)
+                if(index == k) continue = false
+                else i = index
+            }
+            father.fils.apply(index)
+        }
+    }
+
+    def ajoutNewNode(k: Int, listLeaf: ListBuffer[Schröder], nb: Int, l: Int): (Schröder, ListBuffer[Schröder]) =
     {
         var index = 0
-        var newNode = Leaf().asInstanceOf[Schröder]
-        val list = ListBuffer[Leaf]()
+        var leafToDestroy = Leaf().asInstanceOf[Schröder]
+        val list = ListBuffer[Schröder]()
         for(i <- 0 to nb) list.append(Leaf())
 
-        var tmp = listLeaf.remove(k)
+        var tmp = listLeaf.remove(k).asInstanceOf[Node]
 
-        for(j <- tmp.fils) j match
-        {
-            case Leaf() => newNode = j
-            case _ =>
-        }
+        leafToDestroy = whichLeaf(k, listLeaf)
 
-        index = tmp.fils.indexOf(newNode)
-        tmp.fils -= newNode
-        tmp.fils.insert(index, Node(list, l))
+        val newNode = Node(list, l)
 
-        listLeaf.insert(k, this.asInstanceOf[Node])
-        listLeaf.append(this.asInstanceOf[Node])
+        index = tmp.fils.indexOf(leafToDestroy)
+        tmp.fils -= leafToDestroy
+        tmp.fils.insert(index, newNode)
 
-        (tmp.fils.apply(index), listLeaf)
+        listLeaf.insert(k, newNode)
+        listLeaf.append(newNode)
+
+        (newNode, listLeaf)
     }
 
     def treeBuilder(n: Int): Schröder = //n -> Taille de l'arbre = nb Feuille
@@ -47,7 +66,7 @@ class Schröder()
             var k = 0
 
 
-            var listLeaf = ListBuffer(T, T)
+            var listLeaf = ListBuffer[Schröder](T, T)
 
             for(i <- 3 to n)
             {
@@ -59,9 +78,9 @@ class Schröder()
                 }
                 else
                 {
-                    val res = ajoutNewNode(k, listLeaf, 2, l)
-                    last = res._1
-                    listLeaf = res._2
+                    val (res1, res2) = T.ajoutNewNode(k, listLeaf, 2, l)
+                    last = res1.asInstanceOf[Node]
+                    listLeaf = res2
                     l += 1
                 }
             }
@@ -115,13 +134,13 @@ class Schröder()
 
     def unrankComposition(n: Int, k: Int, s: Int): ListBuffer[Int] =
     {
-      var C = ListBuffer[Int]()
+        var C = ListBuffer[Int]()
 
-      if(n ==  k)
+        if(n == 1 && k == 1 && s == 0) C.insert(0,1)
+
+        if(n == k)
         {
-          for(i <- 0 to k-1)
-            C.insert(i,1)
-
+            for(i <- 0 to k-1)C.insert(i,1)
         }
 
         else
@@ -140,7 +159,6 @@ class Schröder()
                 s2 = s2 - combination(n - 2, k - 1)
                 C = unrankComposition(n - 1, k - 1, s2):+ 1
             }
-
             C
         }
       C

@@ -1,13 +1,6 @@
-[0m[[0m[31merror[0m] [0m[0m/home/charton/Bureau/M2/AAGA/AAGA/src/main/scala/Schröder.scala:29:37: type mismatch;[0m
-[0m[[0m[31merror[0m] [0m[0m found   : scala.collection.mutable.ListBuffer[Schröder.this.Leaf][0m
-[0m[[0m[31merror[0m] [0m[0m required: scala.collection.mutable.ListBuffer[schröder.Schröder][0m
-[0m[[0m[31merror[0m] [0m[0mNote: Schröder.this.Leaf <: schröder.Schröder, but class ListBuffer is invariant in type A.[0m
-[0m[[0m[31merror[0m] [0m[0mYou may wish to investigate a wildcard type such as `_ <: schröder.Schröder`. (SLS 3.2.10)[0m
-[0m[[0m[31merror[0m] [0m[0m        tmp.fils.insert(index, Node(list, l))[0m
-[0m[[0m[31merror[0m] [0m[0m                                    ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/charton/Bureau/M2/AAGA/AAGA/src/main/scala/Schröder.scala:63:32: type mismatch;[0m
-[0m[[0m[31merror[0m] [0m[0m found   : schröder.Schröder[0m
-[0m[[0m[31merror[0m] [0m[0m required: Schröder.this.Node[0m
-[0m[[0m[31merror[0m] [0m[0m                    last = res._1[0m
-[0m[[0m[31merror[0m] [0m[0m                               ^[0m
-[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/charton/Bureau/M2/AAGA/AAGA/src/main/scala/Schröder.scala:16:9: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: schröder.Schröder[0m
+[0m[[0m[31merror[0m] [0m[0m        if(listLeaf.count(_ == father) == 1) father.fils.apply(0)[0m
+[0m[[0m[31merror[0m] [0m[0m        ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
