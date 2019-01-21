@@ -24,7 +24,7 @@ class Schröder()
             {
                 index = listLeaf.indexOf(father, i)
                 if(index == k) continue = false
-                else i = index
+                else i = index + 1
             }
             father.fils.apply(index)
         }
@@ -37,9 +37,9 @@ class Schröder()
         val list = ListBuffer[Schröder]()
         for(i <- 0 to nb) list.append(Leaf())
 
-        var tmp = listLeaf.remove(k).asInstanceOf[Node]
-
         leafToDestroy = whichLeaf(k, listLeaf)
+
+        var tmp = listLeaf.remove(k).asInstanceOf[Node]
 
         val newNode = Node(list, l)
 
