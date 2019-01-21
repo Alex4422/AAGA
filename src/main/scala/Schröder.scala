@@ -26,6 +26,9 @@ class Schröder()
                 if(index == k) continue = false
                 else i = index + 1
             }
+            println("k : "+k)
+            println("index : "+index)
+            println("size : "+father.fils.size)
             father.fils.apply(index)
         }
     }
@@ -37,20 +40,30 @@ class Schröder()
         val list = ListBuffer[Schröder]()
         for(i <- 0 to nb) list.append(Leaf())
 
-        leafToDestroy = whichLeaf(k, listLeaf)
+        if(listLeaf.isEmpty)
+        {
+            val newNode = Node(list, 0)
+            val list2 = ListBuffer[Schröder]()
+            for(i <- 0 to nb) list2.append(newNode)
+            (newNode, list2)
+        }
+        else
+        {
+            leafToDestroy = whichLeaf(k, listLeaf)
 
-        var tmp = listLeaf.remove(k).asInstanceOf[Node]
+            var tmp = listLeaf.remove(k).asInstanceOf[Node]
 
-        val newNode = Node(list, l)
+            val newNode = Node(list, l)
 
-        index = tmp.fils.indexOf(leafToDestroy)
-        tmp.fils -= leafToDestroy
-        tmp.fils.insert(index, newNode)
+            index = tmp.fils.indexOf(leafToDestroy)
+            tmp.fils -= leafToDestroy
+            tmp.fils.insert(index, newNode)
 
-        listLeaf.insert(k, newNode)
-        listLeaf.append(newNode)
+            listLeaf.insert(k, newNode)
+            listLeaf.append(newNode)
 
-        (newNode, listLeaf)
+            (newNode, listLeaf)
+        }
     }
 
     def treeBuilder(n: Int): Schröder = //n -> Taille de l'arbre = nb Feuille
@@ -78,7 +91,7 @@ class Schröder()
                 }
                 else
                 {
-                    val (res1, res2) = T.ajoutNewNode(k, listLeaf, 2, l)
+                    val (res1, res2) = ajoutNewNode(k, listLeaf, 2, l)
                     last = res1.asInstanceOf[Node]
                     listLeaf = res2
                     l += 1
@@ -114,17 +127,18 @@ class Schröder()
             var (t, listLeaf) = unrankTree(k, s2)
             var C = unrankComposition(n, k, r/gk)
 
-            t match
+            /*t match
             {
                 case Leaf() => l = 1
                 case Node(_, label) => l = label + 1
-            }
+            }*/
 
-            for(i <- C)
+            for(i <- 0 to C.size - 1)
             {
-                if(i > 1)
+                if(C.apply(i) > 1)
                 {
-
+                    var res = ajoutNewNode(i, listLeaf, C.apply(i), 0)
+                    listLeaf = res._2
                 }
             }
 
@@ -151,7 +165,7 @@ class Schröder()
             if(s2 < combination(n - 2, k - 1))
             {
                 C = unrankComposition(n - 1, k, s2)
-                C.update(C.size, C.last + 1)
+                C.update(C.size - 1, C.last + 1)
 
             }
             else
@@ -159,7 +173,6 @@ class Schröder()
                 s2 = s2 - combination(n - 2, k - 1)
                 C = unrankComposition(n - 1, k - 1, s2):+ 1
             }
-            C
         }
       C
     }

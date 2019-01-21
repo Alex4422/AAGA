@@ -8,12 +8,10 @@ object Bib
         else combination(n - 1, k - 1) + combination(n - 1, k)
     }
 
-    def ComptageStong(n: Int, k: Int): Int = (n,k) match//n -> Feuille, k -> noeud interne
+    def ComptageStong(n: Int): Int = //n -> Feuille
     {
-        case (0, 0) => 0
-        case (1, 0) => 1
-        case (_, 1) => 1
-        case _ => ComptageStong(n - 1, k) + (n - 1) * ComptageStong(n - 1, k - 1)
+        if(n <= 2) 1
+        else n * ComptageStong(n-1)
     }
 
     def ComptageWeak(n: Int): Int =
