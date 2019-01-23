@@ -9,6 +9,28 @@ class Schröder()
     case class Leaf() extends Schröder
     case class Void() extends Schröder
 
+    def nbNoeudInterne(): Int = this match
+    {
+        case Node(fils, _) => this._nbNoeudInterne(0)
+        case _ => 0
+    }
+
+    def _nbNoeudInterne(n: Int): Int = this match
+    {
+        case Node(fils, _) =>
+        {
+            var res = n
+            for(e <- fils) res += e._nbNoeudInterne(n)
+            res
+        }
+        case _ => n
+    }
+
+    def hauteur(): Int =
+    {
+
+    }
+
     def whichLeaf(k: Int, listLeaf:ListBuffer[Schröder]): Schröder =
     {
         var compteur = 0
@@ -116,8 +138,6 @@ class Schröder()
 
             while(r >= 0)
             {
-                println("COUCOU")
-                println("r : "+r)
                 r = r - combination(n - 1, k - 1) * gk
                 k = k - 1
                 gk = ComptageWeak(k)
@@ -125,7 +145,6 @@ class Schröder()
 
             k = k + 1
             gk = ComptageWeak(k)
-            println("SALUT")
             r = r + combination(n - 1, k - 1) * gk
 
             var s2 = r % gk
