@@ -34,6 +34,7 @@ class Schröder()
     def whichLeaf(k: Int, listLeaf:ListBuffer[Schröder]): Schröder =
     {
         println("HEY")
+        var res = Leaf()
         var compteur = 0
         var i = 0
         var index = 0
@@ -41,7 +42,18 @@ class Schröder()
         val father = listLeaf.apply(k).asInstanceOf[Node]
         var nbSon = listLeaf.count(_ == father)
 
-        if(nbSon == 1) father.fils.apply(0)
+        if(nbSon == 1)
+        {
+            for(e <- father.fils)
+            {
+                e match
+                {
+                    case Leaf() => res = e.asInstanceOf[Leaf]
+                    case _ =>
+                }
+            }
+            res
+        }
         else
         {
             while(continue)
@@ -54,7 +66,24 @@ class Schröder()
                     compteur = compteur + 1
                 }
             }
-            father.fils.apply(compteur)
+
+            i = 0
+            index = 0
+            do
+            {
+                father.fils.apply(index) match
+                {
+                    case Leaf() =>
+                    {
+                        i = i + 1
+                        index = index + 1
+                    }
+                    case _ => index = index + 1
+                }
+            }
+            while(i < compteur)
+
+            father.fils.apply(index)
         }
     }
 
@@ -80,17 +109,19 @@ class Schröder()
 
             var tmp = listLeaf.remove(k).asInstanceOf[Node]
 
+            println(tmp)
+            println("Destroy : "+leafToDestroy)
+
             val newNode = Node(list, l)
 
             index = tmp.fils.indexOf(leafToDestroy)
-            println(tmp)
             tmp.fils -= leafToDestroy
-            println(tmp)
             tmp.fils.insert(index, newNode)
-            println(tmp)
 
             listLeaf.insert(k, newNode)
             listLeaf.append(newNode)
+
+            println(tmp)
 
             (newNode, listLeaf)
         }
@@ -201,14 +232,15 @@ class Schröder()
       C
     }
 
-    def unrankTreeStrong(n: Int, s: Int): (Schröder, ListBuffer[Schröder], Int) = //n -> Taille de l'arbre = nb Feuille, S -> Rank
+    def unrankTreeStrong(n: Int, s: Int): (Schröder, Schröder, ListBuffer[Schröder], Int) = //n -> Taille de l'arbre = nb Feuille, S -> Rank
     {
-        if(n == 1) (Leaf(), ListBuffer(), 0)
+        if(n == 1) (Leaf(), Leaf(), ListBuffer(), 0)
         else
         {
+            println("COUCOU")
             val random = scala.util.Random
             var tmp = Node(ListBuffer(Leaf(), Leaf()), 1)
-            var t2 = tmp
+            var last = tmp
             var rand = 0
             var k = n - 1
             var tk = ComptageStrong(n)
@@ -226,34 +258,34 @@ class Schröder()
             r = r + combination(n - 1, k - 1) * tk
 
             var s2 = r % tk
-            var (t, listLeaf, l) = unrankTreeStrong(k, s2)
+            var (root, t, listLeaf, l) = this.unrankTreeStrong(k, s2)
 
             t match
             {
                 case Leaf() =>
                 {
-                    return (tmp, ListBuffer(tmp, tmp), 1)
+                    return (tmp, tmp, ListBuffer(tmp, tmp), 1)
                 }
                 case _ =>
             }
 
-            t2 = t.asInstanceOf[Node]
+            last = t.asInstanceOf[Node]
 
             rand = random.nextInt(listLeaf.size + 1)
-            println("rand : "+rand)
-            println("size : "+listLeaf.size)
 
             if(rand == listLeaf.size)
             {
-                listLeaf.append(t)
-                t2.fils.append(Leaf())
-                (t2, listLeaf, l)
+                println("HELLO")
+                listLeaf.append(last)
+                last.fils.append(Leaf())
+                (root, last, listLeaf, l)
             }
             else
             {
-                println("COUCOU")
+                //println(root)
+                println("SALUT")
                 val (res1, res2) = ajoutNewNode(rand, listLeaf, 2, l + 1)
-                (t2, res2, l + 1)
+                (root, res1, res2, l + 1)
             }
         }
     }

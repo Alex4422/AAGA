@@ -1,4 +1,6 @@
-[0m[[0m[31merror[0m] [0m[0m/home/charton/Bureau/M2/AAGA/AAGA/src/main/scala/Schröder.scala:256:18: not found: value self[0m
-[0m[[0m[31merror[0m] [0m[0m                (self, res2, l + 1)[0m
-[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/charton/Bureau/M2/AAGA/AAGA/src/main/scala/Schröder.scala:51:42: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : schröder.Schröder[0m
+[0m[[0m[31merror[0m] [0m[0m required: Schröder.this.Leaf[0m
+[0m[[0m[31merror[0m] [0m[0m                    case Leaf() => res = e[0m
+[0m[[0m[31merror[0m] [0m[0m                                         ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m
