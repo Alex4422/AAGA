@@ -9,6 +9,7 @@ object main
     def main(args: Array[String]): Unit =
     {
         val T = new Schröder
-        println(T.unrankTree(2, ComptageWeak(2) - 1))
+        var res = T.unrankTreeStrong(5,ComptageStrong(2) - 1)
+        println("res : "+res._1)
     }
 }

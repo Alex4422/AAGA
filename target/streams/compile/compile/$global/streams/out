@@ -1,11 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/charton/Bureau/M2/AAGA/AAGA/src/main/scala/Schröder.scala:23:19: type mismatch;[0m
-[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
-[0m[[0m[31merror[0m] [0m[0m required: Int[0m
-[0m[[0m[31merror[0m] [0m[0m            for(e <- fils) res += e._nbNoeudInterne(n)[0m
-[0m[[0m[31merror[0m] [0m[0m                  ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/charton/Bureau/M2/AAGA/AAGA/src/main/scala/Schröder.scala:29:5: type mismatch;[0m
-[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
-[0m[[0m[31merror[0m] [0m[0m required: Int[0m
-[0m[[0m[31merror[0m] [0m[0m    {[0m
-[0m[[0m[31merror[0m] [0m[0m    ^[0m
-[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/charton/Bureau/M2/AAGA/AAGA/src/main/scala/Schröder.scala:256:18: not found: value self[0m
+[0m[[0m[31merror[0m] [0m[0m                (self, res2, l + 1)[0m
+[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

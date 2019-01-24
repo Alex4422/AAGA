@@ -26,13 +26,14 @@ class Schröder()
         case _ => n
     }
 
-    def hauteur(): Int =
+    /*def hauteur(): Int =
     {
 
-    }
+    }*/
 
     def whichLeaf(k: Int, listLeaf:ListBuffer[Schröder]): Schröder =
     {
+        println("HEY")
         var compteur = 0
         var i = 0
         var index = 0
@@ -62,10 +63,11 @@ class Schröder()
         var index = 0
         var leafToDestroy = Leaf().asInstanceOf[Schröder]
         val list = ListBuffer[Schröder]()
-        for(i <- 0 to nb) list.append(Leaf())
+        for(i <- 0 to nb - 1) list.append(Leaf())
 
         if(listLeaf.isEmpty)
         {
+            println("HEY3")
             val newNode = Node(list, 0)
             val list2 = ListBuffer[Schröder]()
             for(i <- 0 to nb) list2.append(newNode)
@@ -73,6 +75,7 @@ class Schröder()
         }
         else
         {
+            println("HEY2")
             leafToDestroy = whichLeaf(k, listLeaf)
 
             var tmp = listLeaf.remove(k).asInstanceOf[Node]
@@ -80,8 +83,11 @@ class Schröder()
             val newNode = Node(list, l)
 
             index = tmp.fils.indexOf(leafToDestroy)
+            println(tmp)
             tmp.fils -= leafToDestroy
+            println(tmp)
             tmp.fils.insert(index, newNode)
+            println(tmp)
 
             listLeaf.insert(k, newNode)
             listLeaf.append(newNode)
@@ -151,12 +157,6 @@ class Schröder()
             var (t, listLeaf) = unrankTree(k, s2)
             var C = unrankComposition(n, k, r/gk)
 
-            /*t match
-            {
-                case Leaf() => l = 1
-                case Node(_, label) => l = label + 1
-            }*/
-
             for(i <- 0 to C.size - 1)
             {
                 if(C.apply(i) > 1)
@@ -194,7 +194,6 @@ class Schröder()
             }
             else
             {
-                println("HELLO")
                 s2 = s2 - combination(n - 2, k - 1)
                 C = unrankComposition(n - 1, k - 1, s2):+ 1
             }
@@ -202,38 +201,60 @@ class Schröder()
       C
     }
 
-  def unrankTreeStrong(n: Int, s: Int): (Schröder, ListBuffer[Schröder]) = //n -> Taille de l'arbre = nb Feuille, S -> Rank
-  {
-    if(n == 1) (Leaf(), ListBuffer())
-    else
+    def unrankTreeStrong(n: Int, s: Int): (Schröder, ListBuffer[Schröder], Int) = //n -> Taille de l'arbre = nb Feuille, S -> Rank
     {
-      var k = n - 1
-      var tk = ComptageStrong(n)
-      var r = s
-      var l = 0
+        if(n == 1) (Leaf(), ListBuffer(), 0)
+        else
+        {
+            val random = scala.util.Random
+            var tmp = Node(ListBuffer(Leaf(), Leaf()), 1)
+            var t2 = tmp
+            var rand = 0
+            var k = n - 1
+            var tk = ComptageStrong(n)
+            var r = s
 
-      while(r >= 0)
-      {
-        r = r - combination(n - 1, k - 1) * tk
-        k = k - 1
-        tk = ComptageStrong(n)
-      }
+            while(r >= 0)
+            {
+                r = r - combination(n - 1, k - 1) * tk
+                k = k - 1
+                tk = ComptageStrong(n)
+            }
 
-      k = k + 1
-      tk = ComptageStrong(n)
-      r = r + combination(n - 1, k - 1) * tk
+            k = k + 1
+            tk = ComptageStrong(n)
+            r = r + combination(n - 1, k - 1) * tk
 
-      var s2 = r % tk
-      var (t, listLeaf) = unrankTreeStrong(k, s2)
+            var s2 = r % tk
+            var (t, listLeaf, l) = unrankTreeStrong(k, s2)
 
-      t match
-      {
-        case Leaf() => l = 1
-        case Node(_, label) => l = label + 1
-      }
+            t match
+            {
+                case Leaf() =>
+                {
+                    return (tmp, ListBuffer(tmp, tmp), 1)
+                }
+                case _ =>
+            }
 
+            t2 = t.asInstanceOf[Node]
 
-      (t, listLeaf)
+            rand = random.nextInt(listLeaf.size + 1)
+            println("rand : "+rand)
+            println("size : "+listLeaf.size)
+
+            if(rand == listLeaf.size)
+            {
+                listLeaf.append(t)
+                t2.fils.append(Leaf())
+                (t2, listLeaf, l)
+            }
+            else
+            {
+                println("COUCOU")
+                val (res1, res2) = ajoutNewNode(rand, listLeaf, 2, l + 1)
+                (t2, res2, l + 1)
+            }
+        }
     }
-  }
 }
